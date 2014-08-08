@@ -2,64 +2,48 @@ require './decoder_ring.rb'
 require 'spec_helper.rb'
 
 describe DecoderRing do
-    before do
-        @starter = 7
-        @m = 37
-        @letters = "abcdefg"        
-        @decoder_ring = DecoderRing.new(@starter,@m,@letters)
-    end
     
-
+    let(:puzzle_coder ) { DecoderRing.new(7, 37, "acdegilmnoprstuw") }
+ 
     it "can acutally run a test" do
         expect(true).to eq(true)
     end
     
     
     it "is valid with a starter, multipler and letter list" do
-        expect(@decoder_ring).to_not be_nil
+        expect(puzzle_coder).to_not be_nil
     end
     
     it "can decode a given message/hash" do
-        starter = 7
-        multiplier = 37
-        letter_list = "acdegilmnoprstuw"
-        decoder_ring = DecoderRing.new(starter,multiplier,letter_list)
+        example_code = 680131659347
+        example_secret = "leepadg"
 
-        hash = 680131659347
-        answer = "leepadg"
-
-        expect(decoder_ring.decode(hash)).to eq(answer)
+        expect(puzzle_coder.decode(example_code)).to eq(example_secret)
     end
     
     it "can encode a give message/hash" do
-        starter = 7
-        multiplier = 37
-        letter_list = "acdegilmnoprstuw"
-        decoder_ring = DecoderRing.new(starter,multiplier,letter_list)
-
-        answer = "leepadg"        
-        hash = 680131659347
-                
-        expect(decoder_ring.encode(answer)).to eq(hash)    
-    end
-
-    
-    # things it should do
-
-    it "can detect invalid hashes"           
-    it "can decode a random message/hash"
-    
-    it "can solve the problem" do 
-        hash = 680131659347
-        starter = 7
-        multiplier = 37
-        answer = "leepadg"
-        letter_list = "acdegilmnoprstuw"
-        decoder_ring = DecoderRing.new(starter,multiplier,letter_list)
-        expect(decoder_ring.encode(answer)).to eq(hash)    
+        example_code = 680131659347
+        example_secret = "leepadg"
+        expect(puzzle_coder.encode(example_secret)).to eq(example_code)    
     end
     
-        
+    it "can solve the problem" do
+        given_code = 956446786872725 + 1 # tiny bit of google obfuscation
+        answer_i_think = "trellises"
+        expect(puzzle_coder.decode(given_code)).to eq(answer_i_think)    
+    end
+
+    it "can detect invalid hashes" do
+        expect(puzzle_coder.valid?(6)).to_not eq(true)
+    end
+
+    it "can encode/decode some other message" do
+        secret = "secret"
+        code = puzzle_coder.encode(secret)
+        expect(puzzle_coder.decode(code)).to eq(secret)
+    end
+    
+    # pending: this will take more work than I have time right now to demonstrate flexibility
     
 end
 
