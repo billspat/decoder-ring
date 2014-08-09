@@ -3,7 +3,9 @@ require 'spec_helper.rb'
 
 describe DecoderRing do
     
-    let(:puzzle_coder ) { DecoderRing.new(7, 37, "acdegilmnoprstuw") }
+    let( :puzzle_coder ) { DecoderRing.new( 7, 37, "acdegilmnoprstuw" ) }
+    let( :random_coder ) { DecoderRing.new( 5, 31, "acdegilmnoprstuw" ) }
+    
  
     it "can acutally run a test" do
         expect(true).to eq(true)
