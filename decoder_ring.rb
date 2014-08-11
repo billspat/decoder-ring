@@ -5,10 +5,15 @@
 
 
 class DecoderRing
+    
+    attr_writer :code, :secret
+    
     def initialize(starter,multiplier,letterlist)
         @starter = starter     # starter = base number
         @multiplier = multiplier  # number to multipl 
         @letterlist = letterlist  # cypher alphabet, indexing secret letters
+        @code = nil
+        @secret = nil        
     end
     
     public 
@@ -30,8 +35,8 @@ class DecoderRing
         return if not valid?(code)
         @secret = ""
         @code = code/@starter
-        while @code > @multipler
-            @code = @secret.insert(0, pop!)
+        while @code >= @multiplier
+            @secret.insert(0, pop!)
         end
         @secret        
     end  
@@ -39,11 +44,11 @@ class DecoderRing
     private
     
     def pop!       
-        unless @code < @multiplier
-            letter = @letterlist[@code % @multiplier] 
-            @code = (@code - @code % @multiplier) / @multiplier #  unless @code < @multiplier
-            letter
-        end
+        # unless @code < @multiplier
+            letter_index = @code % @multiplier
+            @code = (@code - letter_index ) / @multiplier #  unless @code < @multiplier
+            @letterlist[letter_index] 
+        # end
     end   
     
 end
