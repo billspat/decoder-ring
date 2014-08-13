@@ -1,10 +1,21 @@
 require './decoder_ring.rb'
 require 'spec_helper.rb'
 
+
 describe DecoderRing do
     
+    def random_letters
+        'a' + 'cdeinoprstuw' + 'x'
+        # TODO: collect random list of letters
+    end
+    
+    def random_secret(letters, max_length = 15)
+        # TODO: build random colleciton of letters from secret
+    end
+    
+     
     let( :puzzle_coder ) { DecoderRing.new( 7, 37, "acdegilmnoprstuw" ) }
-    let( :random_coder ) { DecoderRing.new( 5, 31, "acdeinoprstuwx" ) }
+    let( :random_coder ) { b = rand(11); m = rand(30) + 20; DecoderRing.new( b, m, random_letters ) }
         
     it "is valid with a starter, multipler and letter list" do
         expect(puzzle_coder).to_not be_nil
