@@ -5,13 +5,7 @@ describe DecoderRing do
     
     let( :puzzle_coder ) { DecoderRing.new( 7, 37, "acdegilmnoprstuw" ) }
     # let( :random_coder ) { DecoderRing.new( 5, 31, "acdegilmnoprstuw" ) }
-    
- 
-    it "can acutally run a test" do
-        expect(true).to eq(true)
-    end
-    
-    
+        
     it "is valid with a starter, multipler and letter list" do
         expect(puzzle_coder).to_not be_nil
     end
@@ -44,8 +38,6 @@ describe DecoderRing do
         code = puzzle_coder.encode(secret)
         expect(puzzle_coder.decode(code)).to eq(secret)
     end
-    
-    # pending: this will take more work than I have time right now to demonstrate flexibility
     
 end
 
