@@ -7,6 +7,8 @@ Converts string message into a integer secret code based on alphabetic indexing.
 
 Example : 
 
+<code>
+
   s = 8
   m = 31
   letter_list = "abcdehlox"
@@ -15,3 +17,5 @@ Example :
   secret_code = p.encode("hello, there!")
   secret = p.decode(secret_code)
   print secret
+
+</code>
