@@ -1,21 +1,28 @@
-require './decoder_ring.rb'
+require './puzzelish.rb'
 require 'spec_helper.rb'
 
 
-describe DecoderRing do
+describe Puzzelish do
     
-    def random_letters
+    let ( :random_letters ) do 
         'a' + 'cdeinoprstuw' + 'x'
         # TODO: collect random list of letters
     end
     
-    def random_secret(letters, max_length = 15)
+    def random_secret(letters=random_letters, max_length = 15)
+        "secret"
         # TODO: build random colleciton of letters from secret
+        # also dependency on random letters no quite right
+    end
+     
+    let( :puzzle_coder ) { Puzzelish.new( 7, 37, "acdegilmnoprstuw" ) }
+
+    let( :random_coder ) do 
+        b = rand(11)
+        m = rand(30) + 20
+        Puzzelish.new( b, m, random_letters )
     end
     
-     
-    let( :puzzle_coder ) { DecoderRing.new( 7, 37, "acdegilmnoprstuw" ) }
-    let( :random_coder ) { b = rand(11); m = rand(30) + 20; DecoderRing.new( b, m, random_letters ) }
         
     it "is valid with a starter, multipler and letter list" do
         expect(puzzle_coder).to_not be_nil

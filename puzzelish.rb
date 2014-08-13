@@ -4,7 +4,7 @@
 # secret = DecoderRing.new(s,m,"ehlo").decode(secret_code)
 
 
-class DecoderRing
+class Puzzelish
     
     attr_writer :code, :secret
     
