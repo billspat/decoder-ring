@@ -4,7 +4,7 @@ require 'spec_helper.rb'
 describe DecoderRing do
     
     let( :puzzle_coder ) { DecoderRing.new( 7, 37, "acdegilmnoprstuw" ) }
-    # let( :random_coder ) { DecoderRing.new( 5, 31, "acdegilmnoprstuw" ) }
+    let( :random_coder ) { DecoderRing.new( 5, 31, "acdeinoprstuwx" ) }
         
     it "is valid with a starter, multipler and letter list" do
         expect(puzzle_coder).to_not be_nil
@@ -38,6 +38,20 @@ describe DecoderRing do
         code = puzzle_coder.encode(secret)
         expect(puzzle_coder.decode(code)).to eq(secret)
     end
+    
+    it "works with other encoding params" do 
+        secret = "secret"
+        code = random_coder.encode(secret)
+        expect(random_coder.decode(code)).to eq(secret)
+    end
+    
+    it "works with starting and ending letters in list" do
+        secret = "ax"
+        expect(random_coder.decode(random_coder.encode(secret))).to eq(secret)
+        secret = "xa"
+        expect(random_coder.decode(random_coder.encode(secret))).to eq(secret)        
+    end
+        
     
 end
 
