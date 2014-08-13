@@ -1,4 +1,4 @@
-require './puzzelish.rb'
+require './lib/puzzelish.rb'
 require 'spec_helper.rb'
 
 
