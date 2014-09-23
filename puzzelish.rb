@@ -1,7 +1,13 @@
-# very simplistic cipher/decipher
-# converts string into numeric code based on alphabetic indexing 
-# secret_code =  DecoderRing.new(s,m,"ehlo").encode("hello")
-# secret = DecoderRing.new(s,m,"ehlo").decode(secret_code)
+# puzzleish.rb pat@billspat.com
+# dwtfyw license
+#
+# very simplistic cipher/decipher : converts string into numeric code based on alphabetic indexing 
+# uses a starter or base number, a multiplier number, and a list of letters used for indexing that includes 
+# all of the letters in the secret
+# example
+# s = 8; m = 38; letters = "ehlo"
+# secret_code =  Puzzelish.new(s,m,letters).encode("hello")
+# secret = Puzzleish.new(s,m,letters).decode(secret_code)
 
 
 class Puzzelish
