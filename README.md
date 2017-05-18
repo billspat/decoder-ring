@@ -5,10 +5,10 @@ pat@billspat.com
 
 [WTFPL license](https://en.wikipedia.org/wiki/WTFPL)
 
-very simplistic cipher/decipher : converts string into numeric code based on alphabetic indexing.   Project to learn rspec and based on
-a challenge issued to job applicants for Trello many years ago.  
+This is a very simplistic cipher/decipher written in Ruby: converts string into numeric code based on alphabetic indexing.   Project to learn rspec and based on
+a challenge issued to job applicants to Trello.com many years ago.  
 
-uses a starter or base number, a multiplier number, and a list of letters used for indexing that includes all of the letters in the secret
+Uses a starter or base number, a multiplier number, and a list of letters used for indexing that includes all of the letters in the secret
 
 example
 
