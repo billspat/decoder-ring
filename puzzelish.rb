@@ -9,12 +9,16 @@
 # secret_code =  Puzzelish.new(s,m,letters).encode("hello")
 # secret = Puzzleish.new(s,m,letters).decode(secret_code)
 
+# there must be a better way to do this (make a GEM, probably)
+raise "Ruby 1.9.1 required" if RUBY_VERSION.split('.')[0,3].join.to_i < 191
+
 
 class Puzzelish
     
     attr_writer :code, :secret
     
     def initialize(starter,multiplier,letterlist)
+
         @starter = starter     # starter = base number
         @multiplier = multiplier  # number to multipl 
         @letterlist = letterlist  # cypher alphabet, indexing secret letters
